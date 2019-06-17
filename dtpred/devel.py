@@ -41,10 +41,11 @@ D_12['errors'] = ols_res(D_12, 'mass', 'dt')
 
 def get_pairs(string, r=2):
 	if len(string) > r:
-		for i in range(r, len(string)):
+		for i in range(r, len(string)+1):
 			yield string[(i-r):i]
 
-list(get_pairs("ABCADAREAR", 3))
+def test_get_pairs():
+	assert list(get_pairs("ABCAD", 3)) == ['ABC', 'BCA', 'CAD']
 
 def get_counts(df, string_seq_iter=iter, seqstr='sequence'):
 	"""Get a DataFrame with counts of string sequences."""
